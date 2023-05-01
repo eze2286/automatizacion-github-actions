@@ -10,7 +10,7 @@ from pytz import timezone
 secrets_dir = os.path.join(os.environ['GITHUB_WORKSPACE'], '.github', 'secrets')
 path = os.path.join(secrets_dir, 'PATH_AUTH')
 sheet_id = '1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo'
-gc = pygsheets.authorize(service_account_file = path)
+gc = pygsheets.authorize(service_account_file = "secreto.json")
 gsheet_1 = gc.open_by_key("1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo")
 
 
