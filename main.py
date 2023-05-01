@@ -4,11 +4,14 @@ import pandas as pd
 import pygsheets
 from datetime import datetime
 from pytz import timezone
+import json
 
 
 
-secrets_dir = os.path.join(os.environ['GITHUB_WORKSPACE'], '.github', 'secrets')
-path = os.path.join(secrets_dir, 'PATH_AUTH')
+data_dict = os.environ['PATH_AUTH']
+json_datos = json.dumps(data_dict)
+with open("secreto.json", "w") as archivo:
+    archivo.write(json_datos)
 sheet_id = '1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo'
 gc = pygsheets.authorize(service_account_file = "secreto.json")
 gsheet_1 = gc.open_by_key("1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo")
@@ -38,3 +41,6 @@ else:
                    ignore_index=True)
     ws_1.set_dataframe(df,
                      (1,1))
+
+if os.path.exists("secreto.json"):
+    os.remove("secreto.json")
