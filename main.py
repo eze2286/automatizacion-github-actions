@@ -6,14 +6,14 @@ from datetime import datetime
 from pytz import timezone
 import json
 
-
-
+# data = json.dumps(test)
+# data = json.loads(data)
 data_dict = os.environ['PATH_AUTH']
-#json_datos = json.dumps(data_dict)
-#with open("secreto.json", "w") as archivo:
-#    archivo.write(json_datos)
-#sheet_id = '1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo'
-gc = pygsheets.authorize(service_account_env_var = data_dict)
+# json_datos = json.dumps(data_dict)
+with open("secreto.json", "w") as archivo:
+    archivo.write(data_dict)
+sheet_id = '1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo'
+gc = pygsheets.authorize(service_account_file = 'secreto.json')
 gsheet_1 = gc.open_by_key("1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo")
 
 
@@ -42,5 +42,5 @@ else:
     ws_1.set_dataframe(df,
                      (1,1))
 
-#if os.path.exists("secreto.json"):
-#    os.remove("secreto.json")
+# if os.path.exists("secreto.json"):
+#     os.remove("secreto.json")
