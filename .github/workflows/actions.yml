@@ -20,17 +20,9 @@ jobs:
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Crear archivo JSON temporal
-        env:
-          PATH_AUTH: ${{ secrets.PATH_AUTH }}
-        run: echo ${{ secrets.PATH_AUTH }} > secreto.json
+          pip install -r requirements.txt      
 
       - name: execute py script # run main.py
-        env:          
-          GITHUB_WORKSPACE: ${{ github.workspace }}
+        env:                  
+          PATH_AUTH: ${{ secrets.PATH_AUTH }}
         run: python main.py
-
-      - name: Borrar archivo JSON temporal
-        run: rm secreto.json 
