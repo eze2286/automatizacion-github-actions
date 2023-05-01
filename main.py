@@ -9,7 +9,7 @@ import json
 
 
 data_dict = os.environ['PATH_AUTH']
-json_datos = json.dumps(data_dict)
+#json_datos = json.dumps(data_dict)
 #with open("secreto.json", "w") as archivo:
 #    archivo.write(json_datos)
 #sheet_id = '1Xv8HHezgx6bBiS70_mhAZSolXvDWtII6uAdU1dTDzmo'
